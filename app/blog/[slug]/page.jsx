@@ -1,4 +1,4 @@
-
+import Image from "next/image"
 import fs from "fs"
 import path from "path"
 import matter from "gray-matter"
@@ -19,11 +19,11 @@ export default async function SingleBlog(props) {
   const { singleDocument } = await getSingleBlog(props)
   return (
     <>
-      <div>
-      
+      <div className="img-container">
+        <Image src={singleDocument.data.image} alt="blog-image" height={500} width={1000} quality={90} priority={true} />
       </div>  
-      <div>
-        <div>
+      <div className="wrapper">
+        <div className="container">
           <h1>{singleDocument.data.title}</h1>
           <p>{singleDocument.data.date}</p>
           <ReactMarkdown>{singleDocument.content}</ReactMarkdown>
